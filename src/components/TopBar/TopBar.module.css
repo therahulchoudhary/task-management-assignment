@@ -1,0 +1,40 @@
+.header {
+  background: #034EA2;
+  padding: 19px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.leftButton {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.leftButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.leftButtonIcon {
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 1px;
+  flex: 1;
+  font-family: Arial, Helvetica, sans-serif;
+}

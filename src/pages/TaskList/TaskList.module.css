@@ -1,0 +1,153 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
+.content {
+  flex: 1;
+  padding: 0 16px 80px 16px;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.errorState {
+  background-color: #ffebee;
+  border: 1px solid #f44336;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px;
+  color: #c62828;
+}
+
+.errorState button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.errorState button:hover {
+  background-color: #d32f2f;
+}
+
+.loadingState {
+  text-align: center;
+  padding: 40px 20px;
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.section {
+  background-color: white;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background-color: #F3F6F9;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border-radius: 3px;
+  margin-bottom: 8px;
+}
+
+.sectionTitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: #333;
+}
+
+.expandIcon {
+  font-size: 1.2rem;
+  color: #666;
+  transition: transform 0.2s ease;
+}
+
+.taskList {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 3px;
+}
+
+
+.fab {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #034EA2;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fab:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(3, 78, 162, 0.5);
+}
+
+.fab:active {
+  transform: translateY(0);
+}
+
+.fabIcon {
+  font-weight: 300;
+  line-height: 1;
+}
+
+/* Tablet styles */
+@media (min-width: 768px) {
+  .container {
+    margin: 0 auto;
+  }
+  
+  .header {
+    padding: 24px 32px;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+}
+
+/* Desktop styles */
+@media (min-width: 1024px) {
+  
+  .sections {
+    gap: 12px;
+  }
+  
+  .section {
+    border-radius: 12px;
+  }
+  
+}

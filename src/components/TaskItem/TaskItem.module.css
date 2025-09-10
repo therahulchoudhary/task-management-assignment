@@ -1,0 +1,96 @@
+.container {
+  padding: 14px;
+  position: relative;
+  border-bottom: 1px solid #DDDDDD;
+  border-radius: 3px;
+}
+
+.taskCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.taskTitle {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.taskTitleIcon {
+  font-size: 16px;
+  font-weight: 600;
+  color: #034EA2;
+  border: 1px solid #034EA2;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.taskTitleText {
+  font-size: 14px;
+  font-weight: 600;
+  color: #034EA2;
+}
+
+.taskStatus {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.statusDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.statusText {
+  font-size: 12px;
+  font-weight: 600;
+  color: #000;
+}
+
+.taskCardBody {
+  margin-left: 44px;
+}
+
+.taskDescription {
+  font-size: 12px;
+  font-weight: 400;
+  color: #000;
+}
+
+.taskDate {
+  font-size: 10px;
+  font-weight: 400;
+  color: #767676;
+}
+
+.taskActions {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.actionIcon {
+  width: 16px;
+  height: 16px;
+} 
+
+.container:hover .taskActions {
+  opacity: 1;
+}
+
+.container:hover {
+  background-color: #F7F7F7;
+  border:0;
+}
