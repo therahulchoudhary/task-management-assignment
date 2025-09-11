@@ -20,8 +20,7 @@ export const createTaskActions: StateCreator<
     };
     
     set((state) => ({
-      tasks: [...state.tasks, newTask],
-      error: null
+      tasks: [...state.tasks, newTask]
     }));
   },
 
@@ -33,15 +32,13 @@ export const createTaskActions: StateCreator<
         task.id === taskId
           ? { ...task, ...taskData, updatedAt: now }
           : task
-      ),
-      error: null
+      )
     }));
   },
 
   deleteTask: (taskId: string) => {
     set((state) => ({
-      tasks: state.tasks.filter(task => task.id !== taskId),
-      error: null
+      tasks: state.tasks.filter(task => task.id !== taskId)
     }));
   },
 
@@ -53,13 +50,5 @@ export const createTaskActions: StateCreator<
   // Utility actions
   setLoading: (loading: boolean) => {
     set({ isLoading: loading });
-  },
-
-  setError: (error: string | null) => {
-    set({ error });
-  },
-
-  clearError: () => {
-    set({ error: null });
   }
 });

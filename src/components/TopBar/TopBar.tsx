@@ -5,7 +5,7 @@ import ArrowLeftIcon from '../../assets/arrow_left.svg';
 interface TopBarProps {
   title: string;
   showBackButton?: boolean;
-  onBackClick?: () => void;
+  onBackClick?: VoidFunction;
 }
 
 const TopBar: React.FC<TopBarProps> = ({

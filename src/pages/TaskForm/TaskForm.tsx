@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
-import { useTaskStore, selectIsLoading, selectError } from '../../store';
+import { useTaskStore, selectIsLoading } from '../../store';
 import { TaskStatus } from '../../types/task';
 import type { TaskFormData } from '../../types/task';
 import TopBar from '../../components/TopBar/TopBar';
@@ -15,15 +15,12 @@ const TaskForm: React.FC = () => {
   
   // Zustand store selectors
   const isLoading = useTaskStore(selectIsLoading);
-  const error = useTaskStore(selectError);
   
   // Get individual actions to avoid object recreation
   const getTaskById = useTaskStore(state => state.getTaskById);
   const addTask = useTaskStore(state => state.addTask);
   const updateTask = useTaskStore(state => state.updateTask);
   const setLoading = useTaskStore(state => state.setLoading);
-  const setError = useTaskStore(state => state.setError);
-  const clearError = useTaskStore(state => state.clearError);
   
   // Get task by ID using the action method
   const task = taskId ? getTaskById(taskId) : null;
@@ -87,7 +84,6 @@ const TaskForm: React.FC = () => {
     if (validateForm()) {
       try {
         setLoading(true);
-        clearError();
         
         if (task) {
           updateTask(task.id, formData);
@@ -99,7 +95,7 @@ const TaskForm: React.FC = () => {
         await new Promise(resolve => setTimeout(resolve, 500));
         navigate('/');
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'An error occurred');
+        console.log(err);
       } finally {
         setLoading(false);
       }
@@ -125,13 +121,6 @@ const TaskForm: React.FC = () => {
           onBackClick={handleCancel}
         />
 
-        {error && (
-          <div className={styles.errorMessage}>
-            <p>Error: {error}</p>
-            <button onClick={() => clearError()}>Dismiss</button>
-          </div>
-        )}
-
         <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.formGroup}>
             <input
@@ -155,14 +144,11 @@ const TaskForm: React.FC = () => {
               name="description"
               value={formData.description}
               onChange={handleInputChange}
-              className={`${styles.textarea} ${errors.description ? styles.inputError : ''}`}
+              className={styles.textarea}
               placeholder="Enter the description"
               rows={4}
               maxLength={500}
             />
-            {errors.description && (
-              <span className={styles.errorMessage}>{errors.description}</span>
-            )}
           </div>
 
           {isEdit && <div className={styles.formGroup}>

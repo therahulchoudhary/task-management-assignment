@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useTaskStore, selectTasks, selectIsLoading, selectError } from '../../store';
+import { useTaskStore, selectTasks, selectIsLoading } from '../../store';
 import { TaskStatus } from '../../types/task';
 import type { Task } from '../../types/task';
 import { getStatusConfig } from '../../store/state';
@@ -17,7 +17,6 @@ const TaskList: React.FC = () => {
   // Use basic selectors to avoid infinite loops
   const tasks = useTaskStore(selectTasks);
   const isLoading = useTaskStore(selectIsLoading);
-  const error = useTaskStore(selectError);
   
   // Local state for search functionality
   const [searchTerm, setSearchTerm] = useState('');
@@ -31,7 +30,6 @@ const TaskList: React.FC = () => {
   
   // Get individual actions to avoid object recreation
   const deleteTask = useTaskStore(state => state.deleteTask);
-  const clearError = useTaskStore(state => state.clearError);
   
   // Compute filtered tasks and tasks by status using useMemo to prevent infinite loops
   const filteredTasks = useMemo(() => {
@@ -49,6 +47,7 @@ const TaskList: React.FC = () => {
       return acc;
     }, {} as Record<TaskStatus, typeof filteredTasks>);
   }, [filteredTasks]);
+
   const handleAddTask = () => {
     navigate('/add');
   };
@@ -81,13 +80,6 @@ const TaskList: React.FC = () => {
       />
 
       <div className={styles.content}>
-        {error && (
-          <div className={styles.errorState}>
-            <p>Error: {error}</p>
-            <button onClick={() => clearError()}>Dismiss</button>
-          </div>
-        )}
-        
         {isLoading ? (
           <div className={styles.loadingState}>
             <p>Loading tasks...</p>

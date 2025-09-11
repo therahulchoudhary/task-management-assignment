@@ -3,7 +3,6 @@ import type { Task, TaskFormData } from '../types/task';
 export interface TaskState {
   tasks: Task[];
   isLoading: boolean;
-  error: string | null;
 }
 
 export interface TaskActions {
@@ -15,8 +14,6 @@ export interface TaskActions {
   
   // Utility actions
   setLoading: (loading: boolean) => void;
-  setError: (error: string | null) => void;
-  clearError: () => void;
 }
 
 export interface TaskStore extends TaskState, TaskActions {}

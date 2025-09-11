@@ -4,8 +4,7 @@ import { STATUS_CONFIG } from '../constants';
 
 export const initialTaskState: TaskState = {
   tasks: [],
-  isLoading: false,
-  error: null
+  isLoading: false
 };
 
 export const generateTaskId = (): string => {
