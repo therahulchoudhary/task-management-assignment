@@ -14,7 +14,7 @@ import ChevronUp from '../../assets/chevron_up.svg';
 const TaskList: React.FC = () => {
   const navigate = useNavigate();
   
-  // Use basic selectors to avoid infinite loops
+  // Basic global state selectors
   const tasks = useTaskStore(selectTasks);
   const isLoading = useTaskStore(selectIsLoading);
   

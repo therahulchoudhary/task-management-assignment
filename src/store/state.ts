@@ -8,7 +8,7 @@ export const initialTaskState: TaskState = {
 };
 
 export const generateTaskId = (): string => {
-  return Date.now().toString(36) + Math.random().toString(36).substr(2);
+  return Date.now().toString(36) + Math.random().toString(36).slice(2);
 };
 
 export const getInitials = (title: string): string => {
